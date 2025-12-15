@@ -7,7 +7,7 @@ export interface HookVariation {
   reason: string;
 }
 
-const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getAI = () => new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 /**
  * Platform Strategy Maps based on provided PDFs
