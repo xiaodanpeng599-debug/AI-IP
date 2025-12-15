@@ -233,10 +233,14 @@ export default function App() {
   const hasProfileSet = creatorProfile.niche || creatorProfile.persona;
 
   // Step 1: Analyze Angles
-  const handleAnalyze = async () => {
+const handleAnalyze = async () => {
     if (!userInput.trim()) return;
-    if (!process.env.API_KEY) {
-        alert("API Key missing");
+    
+    // Vite 必须用 import.meta.env，并且变量名要有 VITE_ 前缀
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY; 
+    
+    if (!apiKey) {
+        alert("API Key missing: 请检查 Cloudflare 环境变量设置");
         return;
     }
 
